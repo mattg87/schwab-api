@@ -149,7 +149,7 @@ class SchwabOptions:
         dbEngine = sqlalchemy.create_engine(f"mariadb+mariadbconnector://{os.getenv('DB_USERNAME')}:{os.getenv('DB_PASSWORD')}@{os.getenv('DB_HOST')}:{int(os.getenv('DB_PORT'))}/{dbSchema}?charset=utf8mb4", 
                                     connect_args={"ssl": {"ssl_ca": os.getenv('DB_SSL') }})
         
-        # There's gotta be a much better way than going to Polars and then back to Pandas but I just haven't had the time to dig for it yet.
+        # There's gotta be a much better way than going to Polars and then back to Pandas but for now that will do.
         df = dataFrames.to_pandas()
         df.to_sql(dbTable, dbEngine, if_exists='append', chunksize=100, index=False, method='multi')
 
