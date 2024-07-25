@@ -161,3 +161,4 @@ cython_debug/
 
 # Auth data
 token.json
+OTCQuantCA.pem
